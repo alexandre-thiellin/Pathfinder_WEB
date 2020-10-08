@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="row-cols-sm-2">
+    <app-encyclopedia-menu></app-encyclopedia-menu>
+  </div>
+  <div class="col">
+    <h2 class="mb-2 mt-2">Liste des races</h2>
+    <div class="card border-primary mt-2 mb-2 list-group-item-action" *ngFor="let race of races">
+      <div class="row no-gutters">
+        <div class="flex-column">
+          <div class="card-body" style="min-width: 10rem">
+            <h5 class="card-title">{{ race.name }}</h5>
+          </div>
+        </div>
+        <div class="flex-column">
+          <div class="card-body">
+            <button class="btn btn-primary btn-sm" (click)="onViewRace(race)">Details</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ race.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
