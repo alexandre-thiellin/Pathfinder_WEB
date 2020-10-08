@@ -1,0 +1,21 @@
+<div class="row bg-info">
+  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+    <div class="card card-signin my-5">
+      <div class="card-body">
+        <h2 class="card-title text-center">Créer un compte</h2>
+        <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="form-signin">
+          <div class="form-label">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" formControlName="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Mot de passe <span class="small">(longueur minimum : 8)</span></label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+          </div>
+          <p class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+          <button class="btn btn-primary btn-lg btn-block text-uppercase" type="submit" [disabled]="signUpForm.invalid">Créer mon compte</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
