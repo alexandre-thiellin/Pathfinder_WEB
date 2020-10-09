@@ -3,22 +3,22 @@
     <app-encyclopedia-menu></app-encyclopedia-menu>
   </div>
   <div class="col">
-    <h2 class="mb-2 mt-2">Liste des classes</h2>
-    <div class="card border-primary mt-2 mb-2 list-group-item-action" *ngFor="let class of classes">
+    <h2 class="mb-2 mt-2">Liste des items</h2>
+    <div class="card border-primary mt-2 mb-2 list-group-item-action" *ngFor="let skill of skills">
       <div class="row no-gutters">
         <div class="flex-column">
           <div class="card-body" style="min-width: 10rem">
-            <h5 class="card-title">{{ class.name }}</h5>
+            <h5 class="card-title">{{ skill.name }}</h5>
           </div>
         </div>
         <div class="flex-column">
           <div class="card-body">
-            <button class="btn btn-primary btn-sm" (click)="onViewClass(class)">Détails</button>
+            <button class="btn btn-primary btn-sm" (click)="onViewSkill(skill)">Détails</button>
           </div>
         </div>
       </div>
       <div class="card-body">
-        <p class="card-text">{{ class.description }}</p>
+        <p class="card-text">{{ skill.description }}</p>
       </div>
     </div>
   </div>

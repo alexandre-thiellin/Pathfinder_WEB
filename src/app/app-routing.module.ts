@@ -12,19 +12,41 @@ import {ClassesListComponent} from './encyclopedia/classes-list/classes-list.com
 import {ClassComponent} from './encyclopedia/classes-list/class/class.component';
 import {ItemsListComponent} from './encyclopedia/items-list/items-list.component';
 import {ItemComponent} from './encyclopedia/items-list/item/item.component';
+import {ArmorsListComponent} from './encyclopedia/armors-list/armors-list.component';
+import {ArmorComponent} from './encyclopedia/armors-list/armor/armor.component';
+import {CharacterComponent} from './characters-list/character/character.component';
+import {SkillsListComponent} from './encyclopedia/skills-list/skills-list.component';
+import {SkillComponent} from './encyclopedia/skills-list/skill/skill.component';
+import {SpellsListComponent} from './encyclopedia/spells-list/spells-list.component';
+import {SpellComponent} from './encyclopedia/spells-list/spell/spell.component';
+import {TalentsListComponent} from './encyclopedia/talents-list/talents-list.component';
+import {TalentComponent} from './encyclopedia/talents-list/talent/talent.component';
+import {WeaponsListComponent} from './encyclopedia/weapons-list/weapons-list.component';
+import {WeaponComponent} from './encyclopedia/weapons-list/weapon/weapon.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/signup', component: SignupComponent },
   { path: 'characters', canActivate: [AuthGuardService], component: CharactersListComponent },
+  { path: 'characters/:name', canActivate: [AuthGuardService], component: CharacterComponent },
   { path: 'encyclopedia', canActivate: [AuthGuardService], component: EncyclopediaComponent },
+  { path: 'encyclopedia/armors', canActivate: [AuthGuardService], component: ArmorsListComponent },
+  { path: 'encyclopedia/armors/:name', canActivate: [AuthGuardService], component: ArmorComponent },
   { path: 'encyclopedia/classes', canActivate: [AuthGuardService], component: ClassesListComponent },
   { path: 'encyclopedia/classes/:name', canActivate: [AuthGuardService], component: ClassComponent },
   { path: 'encyclopedia/items', canActivate: [AuthGuardService], component: ItemsListComponent },
   { path: 'encyclopedia/items/:name', canActivate: [AuthGuardService], component: ItemComponent },
   { path: 'encyclopedia/races', canActivate: [AuthGuardService], component: RacesListComponent },
   { path: 'encyclopedia/races/:name', canActivate: [AuthGuardService], component: RaceComponent },
+  { path: 'encyclopedia/skills', canActivate: [AuthGuardService], component: SkillsListComponent },
+  { path: 'encyclopedia/skills/:name', canActivate: [AuthGuardService], component: SkillComponent },
+  { path: 'encyclopedia/spells', canActivate: [AuthGuardService], component: SpellsListComponent },
+  { path: 'encyclopedia/spells/:name', canActivate: [AuthGuardService], component: SpellComponent },
+  { path: 'encyclopedia/talents', canActivate: [AuthGuardService], component: TalentsListComponent },
+  { path: 'encyclopedia/talents/:name', canActivate: [AuthGuardService], component: TalentComponent },
+  { path: 'encyclopedia/weapons', canActivate: [AuthGuardService], component: WeaponsListComponent },
+  { path: 'encyclopedia/weapons/:name', canActivate: [AuthGuardService], component: WeaponComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }
 ];

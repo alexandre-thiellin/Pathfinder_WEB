@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Character} from '../model/character.model';
+import {CharactersService} from '../services/characters.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-characters-list',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharactersListComponent implements OnInit {
 
-  constructor() { }
+  characters: Character[] = [];
+  charactersSubscription: Subscription;
+
+  constructor(private charactersService: CharactersService) { }
 
   ngOnInit(): void {
+    this.charactersSubscription = this.charactersService.charactersSubject.subscribe(
+      (data) => {
+        this.characters = data;
+      }
+    );
+    this.charactersService.getCharacters();
+    this.charactersService.emitCharacters();
   }
 
 }

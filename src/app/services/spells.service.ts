@@ -10,6 +10,7 @@ export class SpellsService {
 
   spells: Spell[] = [];
   spellsSubject = new Subject<Spell[]>();
+  spellViewed: Spell;
 
   constructor(private pathfinderApi: PathfinderApiService) { }
 

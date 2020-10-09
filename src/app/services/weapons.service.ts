@@ -10,6 +10,7 @@ export class WeaponsService {
 
   weapons: Weapon[] = [];
   weaponsSubject = new Subject<Weapon[]>();
+  weaponViewed: Weapon;
 
   constructor(private pathfinderApi: PathfinderApiService) { }
 

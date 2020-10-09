@@ -6,7 +6,7 @@ export class WeightPipe implements PipeTransform {
   transform(value: number): string {
     let priceS = '';
     if (value >= 1000) {
-      priceS += (value / 1000).toString();
+      priceS += (Math.trunc(value / 1000)).toString();
       priceS += ' Kg ';
     }
     if (value % 1000 !== 0) {

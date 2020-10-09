@@ -28,6 +28,22 @@ import {ClassesService} from './services/classes.service';
 import {ItemsService} from './services/items.service';
 import {CurrencyPPipe} from './pipes/currency.pipe';
 import {WeightPipe} from './pipes/weight.pipe';
+import { ArmorsListComponent } from './encyclopedia/armors-list/armors-list.component';
+import { ArmorComponent } from './encyclopedia/armors-list/armor/armor.component';
+import { SkillsListComponent } from './encyclopedia/skills-list/skills-list.component';
+import { SkillComponent } from './encyclopedia/skills-list/skill/skill.component';
+import { SpellsListComponent } from './encyclopedia/spells-list/spells-list.component';
+import { SpellComponent } from './encyclopedia/spells-list/spell/spell.component';
+import { TalentsListComponent } from './encyclopedia/talents-list/talents-list.component';
+import { TalentComponent } from './encyclopedia/talents-list/talent/talent.component';
+import { WeaponsListComponent } from './encyclopedia/weapons-list/weapons-list.component';
+import { WeaponComponent } from './encyclopedia/weapons-list/weapon/weapon.component';
+import {ArmorsService} from './services/armors.service';
+import {CharactersService} from './services/characters.service';
+import {SkillsService} from './services/skills.service';
+import {SpellsService} from './services/spells.service';
+import {TalentsService} from './services/talents.service';
+import {WeaponsService} from './services/weapons.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +64,17 @@ import {WeightPipe} from './pipes/weight.pipe';
     ItemsListComponent,
     ItemComponent,
     CurrencyPPipe,
-    WeightPipe
+    WeightPipe,
+    ArmorsListComponent,
+    ArmorComponent,
+    SkillsListComponent,
+    SkillComponent,
+    SpellsListComponent,
+    SpellComponent,
+    TalentsListComponent,
+    TalentComponent,
+    WeaponsListComponent,
+    WeaponComponent
   ],
   imports: [
     BrowserModule,
@@ -61,9 +87,15 @@ import {WeightPipe} from './pipes/weight.pipe';
     AuthService,
     AuthGuardService,
     PathfinderApiService,
+    ArmorsService,
+    CharactersService,
     ClassesService,
     ItemsService,
-    RacesService
+    RacesService,
+    SkillsService,
+    SpellsService,
+    TalentsService,
+    WeaponsService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="row-cols-sm-2">
+    <app-encyclopedia-menu></app-encyclopedia-menu>
+  </div>
+  <div class="col">
+    <div class="card">
+      <!--  <img src="favicon.ico" class="card-img-top" style="width: 28px;height: 30px">-->
+      <div class="card-body">
+        <h3 class="card-title">{{ armor.name }}</h3>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Catégorie : {{ armor.category }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Bonus à la CA : {{ armor.bonus_ca }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Bonus max à la dextérité : {{ armor.max_dex_bonus }}</p>
+          </div>
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Pénalité aux tests : {{ armor.test_penalty }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Chance d'échec des sorts : {{ armor.spell_failure_risk }} %</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Vitesse (9m) : {{ armor.speed_9 }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Vitesse (6m) : {{ armor.speed_6 }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Prix : {{ armor.price | currencyP }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Poids : {{ armor.weight | weight }}</p>
+          </div>
+        </div>
+        <p class="card-text">{{ armor.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+

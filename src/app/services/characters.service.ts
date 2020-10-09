@@ -10,6 +10,7 @@ export class CharactersService {
 
   characters: Character[] = [];
   charactersSubject = new Subject<Character[]>();
+  characterViewed: Character;
 
   constructor(private pathfinderApi: PathfinderApiService) { }
 

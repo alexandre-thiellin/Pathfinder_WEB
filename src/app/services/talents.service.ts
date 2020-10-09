@@ -10,6 +10,7 @@ export class TalentsService {
 
   talents: Talent[] = [];
   talentsSubject = new Subject<Talent[]>();
+  talentViewed: Talent;
 
   constructor(private pathfinderApi: PathfinderApiService) { }
 
