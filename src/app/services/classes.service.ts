@@ -10,7 +10,6 @@ export class ClassesService {
 
   classes: Class[] = [];
   classesSubject = new Subject<Class[]>();
-  classViewed: Class;
 
   constructor(private pathfinderApi: PathfinderApiService) { }
 

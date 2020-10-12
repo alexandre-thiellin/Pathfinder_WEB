@@ -29,6 +29,10 @@ export class PathfinderApiService {
     return this.httpClient.get<Character>(this.baseUrl + 'characters/id/' + id);
   }
 
+  getCharacterByName(name: string): Observable<Character> {
+    return this.httpClient.get<Character>(this.baseUrl + 'characters/name/' + name);
+  }
+
   getClasses(): Observable<Class[]> {
     return this.httpClient.get<Class[]>(this.baseUrl + 'classes');
   }

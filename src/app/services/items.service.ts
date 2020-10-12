@@ -10,7 +10,6 @@ export class ItemsService {
 
   items: Item[] = [];
   itemsSubject = new Subject<Item[]>();
-  itemViewed: Item;
 
   constructor(private pathfinderApi: PathfinderApiService) { }
 

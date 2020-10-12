@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {Talent} from '../../model/talent.model';
@@ -9,7 +9,7 @@ import {TalentsService} from '../../services/talents.service';
   templateUrl: './talents-list.component.html',
   styleUrls: ['./talents-list.component.scss']
 })
-export class TalentsListComponent implements OnInit {
+export class TalentsListComponent implements OnInit, OnDestroy {
 
   talents: Talent[];
   talentsSubscription: Subscription;
@@ -26,9 +26,11 @@ export class TalentsListComponent implements OnInit {
     this.talentsService.emitTalents();
   }
 
-  onViewTalent(talent: Talent): void {
-    this.talentsService.talentViewed = talent;
-    this.router.navigate(['/encyclopedia', 'talents', talent.name.toLowerCase()]);
+  onViewTalent(id: number): void {
+    this.router.navigate(['/encyclopedia', 'talents', id]);
   }
 
+  ngOnDestroy(): void {
+    this.talentsSubscription.unsubscribe();
+  }
 }

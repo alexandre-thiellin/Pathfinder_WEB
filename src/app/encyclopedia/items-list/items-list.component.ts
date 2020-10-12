@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Item} from '../../model/item.model';
 import {Subscription} from 'rxjs';
 import {ItemsService} from '../../services/items.service';
@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   templateUrl: './items-list.component.html',
   styleUrls: ['./items-list.component.scss']
 })
-export class ItemsListComponent implements OnInit {
+export class ItemsListComponent implements OnInit, OnDestroy {
 
   items: Item[];
   itemsSubscription: Subscription;
@@ -26,8 +26,11 @@ export class ItemsListComponent implements OnInit {
     this.itemsService.emitItems();
   }
 
-  onViewItem(item: Item): void {
-    this.itemsService.itemViewed = item;
-    this.router.navigate(['/encyclopedia', 'items', item.name.toLowerCase()]);
+  onViewItem(id: number): void {
+    this.router.navigate(['/encyclopedia', 'items', id]);
+  }
+
+  ngOnDestroy(): void {
+    this.itemsSubscription.unsubscribe();
   }
 }

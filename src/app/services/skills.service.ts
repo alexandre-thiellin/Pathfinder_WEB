@@ -10,7 +10,6 @@ export class SkillsService {
 
   skills: Skill[] = [];
   skillsSubject = new Subject<Skill[]>();
-  skillViewed: Skill;
 
   constructor(private pathfinderApi: PathfinderApiService) { }
 

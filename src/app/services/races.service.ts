@@ -10,7 +10,6 @@ export class RacesService {
 
   races: Race[] = [];
   racesSubject = new Subject<Race[]>();
-  raceViewed: Race;
 
   constructor(private pathfinderApi: PathfinderApiService) { }
 

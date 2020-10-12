@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Class} from '../../model/class.model';
 import {ClassesService} from '../../services/classes.service';
 import {Subscription} from 'rxjs';
@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   templateUrl: './classes-list.component.html',
   styleUrls: ['./classes-list.component.scss']
 })
-export class ClassesListComponent implements OnInit {
+export class ClassesListComponent implements OnInit, OnDestroy {
 
   classes: Class[] = [];
   classesSubscription: Subscription;
@@ -26,8 +26,11 @@ export class ClassesListComponent implements OnInit {
     this.classesService.emitClasses();
   }
 
-  onViewClass(classEl: Class): void {
-    this.classesService.classViewed = classEl;
-    this.router.navigate(['/encyclopedia', 'classes', classEl.name.toLowerCase()]);
+  onViewClass(id: number): void {
+    this.router.navigate(['/encyclopedia', 'classes', id]);
+  }
+
+  ngOnDestroy(): void {
+    this.classesSubscription.unsubscribe();
   }
 }

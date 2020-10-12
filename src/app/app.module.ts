@@ -44,6 +44,7 @@ import {SkillsService} from './services/skills.service';
 import {SpellsService} from './services/spells.service';
 import {TalentsService} from './services/talents.service';
 import {WeaponsService} from './services/weapons.service';
+import { CharactersMenuComponent } from './characters-list/characters-menu/characters-menu.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {WeaponsService} from './services/weapons.service';
     TalentsListComponent,
     TalentComponent,
     WeaponsListComponent,
-    WeaponComponent
+    WeaponComponent,
+    CharactersMenuComponent
   ],
   imports: [
     BrowserModule,

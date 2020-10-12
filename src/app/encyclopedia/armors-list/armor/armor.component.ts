@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Armor} from '../../../model/armor.model';
 import {ArmorsService} from '../../../services/armors.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-armor',
@@ -11,13 +12,12 @@ export class ArmorComponent implements OnInit {
 
   armor: Armor;
 
-  constructor(private armorsService: ArmorsService) { }
+  constructor(private armorsService: ArmorsService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.armorsService.getArmorById(this.armorsService.armorViewed.id).then(
+    this.armorsService.getArmorById(this.activatedRoute.snapshot.params.id).then(
       (data) => {
         this.armor = data;
-        console.log(this.armor.bonus_ca);
       }
     );
   }

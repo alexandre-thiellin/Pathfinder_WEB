@@ -3,7 +3,7 @@
     <app-encyclopedia-menu></app-encyclopedia-menu>
   </div>
   <div class="col">
-    <h2 class="mb-2 mt-2">Liste des items</h2>
+    <h2 class="mb-2 mt-2">Liste des dons</h2>
     <div class="card border-primary mt-2 mb-2 list-group-item-action" *ngFor="let talent of talents">
       <div class="row no-gutters">
         <div class="flex-column">
@@ -13,7 +13,7 @@
         </div>
         <div class="flex-column">
           <div class="card-body">
-            <button class="btn btn-primary btn-sm" (click)="onViewTalent(talent)">Détails</button>
+            <button class="btn btn-primary btn-sm" (click)="onViewTalent(talent.id)">Détails</button>
           </div>
         </div>
       </div>

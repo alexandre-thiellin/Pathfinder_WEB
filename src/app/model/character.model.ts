@@ -7,6 +7,7 @@ import {InventoryWeapon} from './inventory-weapon.model';
 import {InventoryArmor} from './inventory-armor.model';
 import {InventoryItem} from './inventory-item.model';
 
+// tslint:disable:variable-name
 export class Character {
 
   constructor(public id: number,
@@ -29,12 +30,12 @@ export class Character {
               public po: number,
               public pp: number,
               public exp: number,
-              public characterClasses: CharacterClass[],
-              public characterSkills: CharacterSkill[],
-              public characterTalents: CharacterTalent[],
-              public characterSpells: CharacterSpell[],
-              public inventoryWeapons: InventoryWeapon[],
-              public inventoryArmors: InventoryArmor[],
-              public inventoryItems: InventoryItem[]) {
+              public character_classes: CharacterClass[],
+              public character_skills: CharacterSkill[],
+              public character_talents: CharacterTalent[],
+              public character_spells: CharacterSpell[],
+              public inventory_weapons: InventoryWeapon[],
+              public inventory_armors: InventoryArmor[],
+              public inventory_items: InventoryItem[]) {
   }
 }

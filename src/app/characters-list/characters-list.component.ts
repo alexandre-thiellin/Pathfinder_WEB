@@ -10,19 +10,9 @@ import {Subscription} from 'rxjs';
 })
 export class CharactersListComponent implements OnInit {
 
-  characters: Character[] = [];
-  charactersSubscription: Subscription;
-
-  constructor(private charactersService: CharactersService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.charactersSubscription = this.charactersService.charactersSubject.subscribe(
-      (data) => {
-        this.characters = data;
-      }
-    );
-    this.charactersService.getCharacters();
-    this.charactersService.emitCharacters();
   }
 
 }

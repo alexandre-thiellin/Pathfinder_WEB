@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Armor} from '../../model/armor.model';
 import {Subscription} from 'rxjs';
 import {ArmorsService} from '../../services/armors.service';
@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   templateUrl: './armors-list.component.html',
   styleUrls: ['./armors-list.component.scss']
 })
-export class ArmorsListComponent implements OnInit {
+export class ArmorsListComponent implements OnInit, OnDestroy {
 
   armors: Armor[] = [];
   armorsSubscription: Subscription;
@@ -26,8 +26,11 @@ export class ArmorsListComponent implements OnInit {
     this.armorsService.emitArmors();
   }
 
-  onViewArmor(armor: Armor): void {
-    this.armorsService.armorViewed = armor;
-    this.router.navigate(['/encyclopedia', 'armors', armor.name.toLowerCase()]);
+  onViewArmor(id: number): void {
+    this.router.navigate(['/encyclopedia', 'armors', id]);
+  }
+
+  ngOnDestroy(): void {
+    this.armorsSubscription.unsubscribe();
   }
 }

@@ -10,7 +10,6 @@ export class ArmorsService {
 
   armors: Armor[] = [];
   armorsSubject = new Subject<Armor[]>();
-  armorViewed: Armor;
 
   constructor(private pathfinderApi: PathfinderApiService) { }
 

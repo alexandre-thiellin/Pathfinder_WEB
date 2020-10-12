@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RacesService} from '../../services/races.service';
 import {Race} from '../../model/race.model';
 import {Subscription} from 'rxjs';
@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   templateUrl: './races-list.component.html',
   styleUrls: ['./races-list.component.scss']
 })
-export class RacesListComponent implements OnInit {
+export class RacesListComponent implements OnInit, OnDestroy {
 
   races: Race[] = [];
   racesSubscription: Subscription;
@@ -26,8 +26,11 @@ export class RacesListComponent implements OnInit {
     this.racesService.emitRaces();
   }
 
-  onViewRace(race: Race): void {
-    this.racesService.raceViewed = race;
-    this.router.navigate(['/encyclopedia', 'races', race.name.toLowerCase()]);
+  onViewRace(id: number): void {
+    this.router.navigate(['/encyclopedia', 'races', id]);
+  }
+
+  ngOnDestroy(): void {
+    this.racesSubscription.unsubscribe();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {Weapon} from '../../model/weapon.model';
@@ -9,7 +9,7 @@ import {WeaponsService} from '../../services/weapons.service';
   templateUrl: './weapons-list.component.html',
   styleUrls: ['./weapons-list.component.scss']
 })
-export class WeaponsListComponent implements OnInit {
+export class WeaponsListComponent implements OnInit, OnDestroy {
 
   weapons: Weapon[];
   weaponsSubscription: Subscription;
@@ -26,9 +26,11 @@ export class WeaponsListComponent implements OnInit {
     this.weaponsService.emitWeapons();
   }
 
-  onViewWeapon(weapon: Weapon): void {
-    this.weaponsService.weaponViewed = weapon;
-    this.router.navigate(['/encyclopedia', 'weapons', weapon.name.toLowerCase()]);
+  onViewWeapon(id: number): void {
+    this.router.navigate(['/encyclopedia', 'weapons', id]);
   }
 
+  ngOnDestroy(): void {
+    this.weaponsSubscription.unsubscribe();
+  }
 }

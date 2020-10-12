@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {Spell} from '../../model/spell.model';
@@ -9,7 +9,7 @@ import {SpellsService} from '../../services/spells.service';
   templateUrl: './spells-list.component.html',
   styleUrls: ['./spells-list.component.scss']
 })
-export class SpellsListComponent implements OnInit {
+export class SpellsListComponent implements OnInit, OnDestroy {
 
   spells: Spell[];
   spellsSubscription: Subscription;
@@ -26,9 +26,11 @@ export class SpellsListComponent implements OnInit {
     this.spellsService.emitSpells();
   }
 
-  onViewSpell(spell: Spell): void {
-    this.spellsService.spellViewed = spell;
-    this.router.navigate(['/encyclopedia', 'spells', spell.name.toLowerCase()]);
+  onViewSpell(id: number): void {
+    this.router.navigate(['/encyclopedia', 'spells', id]);
   }
 
+  ngOnDestroy(): void {
+    this.spellsSubscription.unsubscribe();
+  }
 }

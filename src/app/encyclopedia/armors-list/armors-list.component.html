@@ -3,7 +3,7 @@
     <app-encyclopedia-menu></app-encyclopedia-menu>
   </div>
   <div class="col">
-    <h2 class="mb-2 mt-2">Liste des Armures</h2>
+    <h2 class="mb-2 mt-2">Liste des armures</h2>
     <div class="card border-primary mt-2 mb-2 list-group-item-action" *ngFor="let armor of armors">
       <div class="row no-gutters">
         <div class="flex-column">
@@ -13,7 +13,7 @@
         </div>
         <div class="flex-column">
           <div class="card-body">
-            <button class="btn btn-primary btn-sm" (click)="onViewArmor(armor)">Détails</button>
+            <button class="btn btn-primary btn-sm" (click)="onViewArmor(armor.id)">Détails</button>
           </div>
         </div>
       </div>
