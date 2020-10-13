@@ -19,7 +19,7 @@
         </ul>
         <ul class="list-group list-group-horizontal">
           <li class="list-group-item list-group-item-action border-secondary" style="width: 10%"
-              *ngFor="let characterClass of character.character_classes"
+              *ngFor="let characterClass of character.characters_classes"
               (click)="onDetails('/encyclopedia/classes/'+characterClass.class_.id)">
             {{ characterClass.class_.name }} : lvl {{ characterClass.lvl }}
           </li>
@@ -46,7 +46,7 @@
         <h3>Compétences</h3>
         <ul class="list-group">
           <li class="list-group-item list-group-item-action"
-              *ngFor="let characterSkill of character.character_skills"
+              *ngFor="let characterSkill of character.characters_skills"
               [ngClass]="{'border-success': characterSkill.class_skill}"
               (click)="onDetails('/encyclopedia/skills/'+characterSkill.skill.id)">
             {{ characterSkill.skill.name }} - rang : {{ characterSkill.rank }}
@@ -57,17 +57,17 @@
         <h3>Inventaire</h3>
         <ul class="list-group">
           <li class="list-group-item list-group-item-action"
-              *ngFor="let characterWeapon of character.inventory_weapons"
+              *ngFor="let characterWeapon of character.characters_weapons"
               (click)="onDetails('/encyclopedia/weapons/'+characterWeapon.weapon.id)">
               {{ characterWeapon.weapon.name }}
           </li>
           <li class="list-group-item list-group-item-action"
-              *ngFor="let characterArmor of character.inventory_armors"
+              *ngFor="let characterArmor of character.characters_armors"
               (click)="onDetails('/encyclopedia/armors/'+characterArmor.armor.id)">
             {{ characterArmor.armor.name }}
           </li>
           <li class="list-group-item list-group-item-action"
-              *ngFor="let characterItem of character.inventory_items"
+              *ngFor="let characterItem of character.characters_items"
               (click)="onDetails('/encyclopedia/items/'+characterItem.item.id)">
             {{ characterItem.item.name }}
           </li>
@@ -77,7 +77,7 @@
         <h3>Dons</h3>
         <ul class="list-group">
           <li class="list-group-item list-group-item-action"
-              *ngFor="let characterTalent of character.character_talents"
+              *ngFor="let characterTalent of character.characters_talents"
               (click)="onDetails('/encyclopedia/talents/'+characterTalent.talent.id)">
             {{ characterTalent.talent.name }}
           </li>
@@ -87,7 +87,7 @@
         <h3>Sorts</h3>
         <ul class="list-group">
           <li class="list-group-item list-group-item-action"
-              *ngFor="let characterSpell of character.character_spells"
+              *ngFor="let characterSpell of character.characters_spells"
               (click)="onDetails('/encyclopedia/spells/'+characterSpell.spell.id)">
             {{ characterSpell.spell.name }}
           </li>

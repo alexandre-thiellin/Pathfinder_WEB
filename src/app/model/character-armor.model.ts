@@ -1,6 +1,6 @@
 import {Armor} from './armor.model';
 
-export class InventoryArmor {
+export class CharacterArmor {
 
   constructor(public id: number,
               public armor: Armor,

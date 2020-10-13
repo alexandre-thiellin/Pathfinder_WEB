@@ -45,6 +45,7 @@ import {SpellsService} from './services/spells.service';
 import {TalentsService} from './services/talents.service';
 import {WeaponsService} from './services/weapons.service';
 import { CharactersMenuComponent } from './characters-list/characters-menu/characters-menu.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { CharactersMenuComponent } from './characters-list/characters-menu/chara
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,

@@ -3,9 +3,9 @@ import {CharacterClass} from './character-class.model';
 import {CharacterSkill} from './character-skill.model';
 import {CharacterTalent} from './character-talent.model';
 import {CharacterSpell} from './character-spell.model';
-import {InventoryWeapon} from './inventory-weapon.model';
-import {InventoryArmor} from './inventory-armor.model';
-import {InventoryItem} from './inventory-item.model';
+import {CharacterWeapon} from './character-weapon.model';
+import {CharacterArmor} from './character-armor.model';
+import {CharacterItem} from './character-item.model';
 
 // tslint:disable:variable-name
 export class Character {
@@ -30,12 +30,12 @@ export class Character {
               public po: number,
               public pp: number,
               public exp: number,
-              public character_classes: CharacterClass[],
-              public character_skills: CharacterSkill[],
-              public character_talents: CharacterTalent[],
-              public character_spells: CharacterSpell[],
-              public inventory_weapons: InventoryWeapon[],
-              public inventory_armors: InventoryArmor[],
-              public inventory_items: InventoryItem[]) {
+              public characters_classes: CharacterClass[],
+              public characters_skills: CharacterSkill[],
+              public characters_talents: CharacterTalent[],
+              public characters_spells: CharacterSpell[],
+              public characters_weapons: CharacterWeapon[],
+              public characters_armors: CharacterArmor[],
+              public characters_items: CharacterItem[]) {
   }
 }

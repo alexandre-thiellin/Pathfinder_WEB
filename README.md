@@ -13,7 +13,7 @@ Vous pouvez tester l'api pathfinder avec une application comme Postman avant de 
 Une fois l'application Pathfinder_API en marche vous pouvez entrer dans une invite de commande, 
 dans le dossier source de ce projet, `ng serve`, ce qui lancera le serveur de test.
 
-Remarque : vous devez avoir Node.js installé.
+>___Remarque : vous devez avoir Node.js, rxjs et bootstrap installé.___
 
 Une fois le serveur lancé, vous pouvez vous rendre à l'adresse `http://localhost:4200/home` pour découvrir le site web :)
 
