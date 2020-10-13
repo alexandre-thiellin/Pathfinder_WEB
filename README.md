@@ -5,6 +5,8 @@ Projet de démonstration d'un site web AngularCli avec Bootstrap.
 Ce site web utilise des données basées sur l'univers de pathfinder récupéré depuis une api REST.
 Ce site web utilise Firebase pour gérer les données et les connexions des utilisateurs.
 
+>V2 disponible, cette version utilise des components générique plutôt que d'avoir un component par objet. 
+
 ## Pour commencer
 Pour utiliser ce projet vous aurez besoin du projet [Pathfinder_API](https://github.com/alexandre-thiellin/Pathfinder_API).
 Cloner le repos et lancer l'application.
