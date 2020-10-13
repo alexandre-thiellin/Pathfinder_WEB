@@ -1,35 +1,34 @@
 import { Injectable } from '@angular/core';
-import {Item} from '../model/item.model';
 import {Subject} from 'rxjs';
 import {PathfinderApiService} from './pathfinder-api.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ItemsService {
+export class ObjectsService {
 
-  items: Item[] = [];
-  itemsSubject = new Subject<Item[]>();
+  objects: any[] = [];
+  objectsSubject = new Subject<any[]>();
 
   constructor(private pathfinderApi: PathfinderApiService) { }
 
-  emitItems(): void {
-    this.itemsSubject.next(this.items);
+  emitObjects(): void {
+    this.objectsSubject.next(this.objects);
   }
 
-  getItems(): void {
-    this.pathfinderApi.getItems().subscribe(
+  getObjects(type: string): void {
+    this.pathfinderApi.getObjects(type).subscribe(
       (data) => {
-        this.items = data;
-        this.emitItems();
+        this.objects = data;
+        this.emitObjects();
       }
     );
   }
 
-  getItemById(id: number): Promise<Item> {
-    return new Promise<Item>(
+  getObjectById(type: string, id: number): Promise<any> {
+    return new Promise<any>(
       (resolve, reject) => {
-        this.pathfinderApi.getItemById(id).subscribe(
+        this.pathfinderApi.getObjectById(type, id).subscribe(
           (data) => {
             resolve(data);
           },

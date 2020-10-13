@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="row-cols-sm-2">
+    <app-menu></app-menu>
+  </div>
+  <div class="col" *ngIf="category">
+    <div class="card border-primary mt-2 mb-2 list-group-item-action" *ngFor="let object of objects">
+      <div class="row no-gutters">
+        <div class="flex-column">
+          <div class="card-body" style="min-width: 10rem">
+            <h5 class="card-title">{{ object.name }}</h5>
+          </div>
+        </div>
+        <div class="flex-column">
+          <div class="card-body">
+            <button class="btn btn-primary btn-sm" (click)="onViewObject(object.id)">Détails</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ object.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
