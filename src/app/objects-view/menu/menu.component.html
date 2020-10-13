@@ -1,0 +1,18 @@
+<div class="col bg-secondary" style="min-height: 88vh">
+  <h4 *ngIf="menuType === 'characters'">
+    <a class="nav-link text-light text-uppercase" routerLink="/characters">Personnages</a>
+  </h4>
+  <ul class="nav flex-column nav-tabs " *ngIf="menuType === 'characters'">
+    <li class="nav-item" routerLinkActive="active" *ngFor="let object of objects">
+      <a class="nav-link text-light" routerLink="/characters/{{ object.id }}">{{ object.name }}</a>
+    </li>
+  </ul>
+  <h4 *ngIf="menuType === 'encyclopedia'">
+    <a class="nav-link text-light text-uppercase" routerLink="/encyclopedia">Encyclopédie</a>
+  </h4>
+  <ul class="nav flex-column nav-tabs " *ngIf="menuType === 'encyclopedia'">
+    <li class="nav-item" routerLinkActive="active" *ngFor="let cat of encyclopedia">
+      <a class="nav-link text-light" routerLink="/encyclopedia/{{ cat[1] }}">{{ cat[0] }}</a>
+    </li>
+  </ul>
+</div>

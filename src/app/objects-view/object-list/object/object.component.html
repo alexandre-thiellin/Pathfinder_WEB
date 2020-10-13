@@ -1,0 +1,276 @@
+<div class="row">
+  <div class="row-cols-sm-2">
+    <app-menu></app-menu>
+  </div>
+  <div class="col mb-2 mt-2" *ngIf="type === 'characters'">
+    <div class="card">
+      <div class="card-header">
+        <h2>Personnages : {{ object.name }}</h2>
+        <ul class="list-group list-group-horizontal">
+          <li class="list-group-item list-group-item-action border-secondary" style="width: 10%"
+              (click)="onDetails('/encyclopedia/races/'+object.race.id)">
+            Race : {{ object.race.name }}
+          </li>
+          <li class="list-group-item">Age : {{ object.age }}</li>
+          <li class="list-group-item">Sexe : {{ object.gender }}</li>
+          <li class="list-group-item">Alignement : {{ object.alignment }}</li>
+          <li class="list-group-item">Height : {{ object.height }}</li>
+          <li class="list-group-item">Weight : {{ object.weight }}</li>
+        </ul>
+        <ul class="list-group list-group-horizontal">
+          <li class="list-group-item list-group-item-action border-secondary" style="width: 10%"
+              *ngFor="let characterClass of object.characters_classes"
+              (click)="onDetails('/encyclopedia/classes/'+characterClass.class_.id)">
+            {{ characterClass.class_.name }} : lvl {{ characterClass.lvl }}
+          </li>
+          <li class="list-group-item">Exp : {{ object.exp }}</li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-horizontal">
+          <li class="list-group-item">FOR : {{ object.strength }}</li>
+          <li class="list-group-item">DEX : {{ object.dexterity }}</li>
+          <li class="list-group-item">CON : {{ object.constitution }}</li>
+          <li class="list-group-item">INT : {{ object.intelligence }}</li>
+          <li class="list-group-item">SAG : {{ object.wisdom }}</li>
+          <li class="list-group-item">CHA : {{ object.charisma }}</li>
+        </ul>
+        <ul class="list-group list-group-horizontal">
+          <li class="list-group-item">Pc : {{ object.pc }}</li>
+          <li class="list-group-item">Pa : {{ object.pa }}</li>
+          <li class="list-group-item">Po : {{ object.po }}</li>
+          <li class="list-group-item">Pp : {{ object.pp }}</li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <h3>Compétences</h3>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-action"
+              *ngFor="let characterSkill of object.characters_skills"
+              [ngClass]="{'border-success': characterSkill.class_skill}"
+              (click)="onDetails('/encyclopedia/skills/'+characterSkill.skill.id)">
+            {{ characterSkill.skill.name }} - rang : {{ characterSkill.rank }}
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <h3>Inventaire</h3>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-action"
+              *ngFor="let characterWeapon of object.characters_weapons"
+              (click)="onDetails('/encyclopedia/weapons/'+characterWeapon.weapon.id)">
+            {{ characterWeapon.weapon.name }}
+          </li>
+          <li class="list-group-item list-group-item-action"
+              *ngFor="let characterArmor of object.characters_armors"
+              (click)="onDetails('/encyclopedia/armors/'+characterArmor.armor.id)">
+            {{ characterArmor.armor.name }}
+          </li>
+          <li class="list-group-item list-group-item-action"
+              *ngFor="let characterItem of object.characters_items"
+              (click)="onDetails('/encyclopedia/items/'+characterItem.item.id)">
+            {{ characterItem.item.name }}
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <h3>Dons</h3>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-action"
+              *ngFor="let characterTalent of object.characters_talents"
+              (click)="onDetails('/encyclopedia/talents/'+characterTalent.talent.id)">
+            {{ characterTalent.talent.name }}
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <h3>Sorts</h3>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-action"
+              *ngFor="let characterSpell of object.characters_spells"
+              (click)="onDetails('/encyclopedia/spells/'+characterSpell.spell.id)">
+            {{ characterSpell.spell.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col" *ngIf="type === 'armors'">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ object.name }}</h3>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Catégorie : {{ object.category }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Bonus à la CA : {{ object.bonus_ca }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Bonus max à la dextérité : {{ object.max_dex_bonus }}</p>
+          </div>
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Pénalité aux tests : {{ object.test_penalty }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Chance d'échec des sorts : {{ object.spell_failure_risk }} %</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Vitesse (9m) : {{ object.speed_9 }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Vitesse (6m) : {{ object.speed_6 }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Prix : {{ object.price | currencyP }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Poids : {{ object.weight | weight }}</p>
+          </div>
+        </div>
+        <p class="card-text">{{ object.description }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col" *ngIf="type === 'classes' || type === 'races'">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ object.name }}</h5>
+        <p class="card-text">{{ object.description }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col" *ngIf="type === 'items'">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ object.name }}</h3>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Prix : {{ object.price | currencyP }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Poids : {{ object.weight | weight }}</p>
+          </div>
+        </div>
+        <p class="card-text">{{ object.description }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col" *ngIf="type === 'skills'">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ object.name }}</h3>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Attribut : {{ object.attribute }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Require une formation : {{ object.require_training ? 'OUI' : 'NON' }}</p>
+          </div>
+        </div>
+        <p class="card-text">{{ object.description }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col" *ngIf="type === 'spells'">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ object.name }}</h3>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">École : {{ object.school }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Lvl : {{ object.level }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Temps d'incantation : {{ object.casting_time }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Composantes : {{ object.components }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Portée : {{ object.range }}</p>
+          </div>
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Cible ou zone d'effets : {{ object.target }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Durée : {{ object.duration }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Jet de sauvegarde : {{ object.saving_throw }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Résistance à la magie : {{ object.spell_resistance ? 'OUI' : 'NON' }}</p>
+          </div>
+        </div>
+        <p class="card-text">{{ object.description }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col" *ngIf="type === 'talents'">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ object.name }}</h3>
+        <p class="card-text">Conditions : {{ object.conditions }}</p>
+        <p class="card-text">Avantages : {{ object.advantages }}</p>
+        <p class="card-text">{{ object.description }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col" *ngIf="type === 'weapons'">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ object.name }}</h3>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Catégorie : {{ object.category }}</p>
+          </div>
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Catégorie de portée : {{ object.range_cat }}</p>
+          </div>
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Facteur de portée : {{ object.range }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Type de dégât : {{ object.damage_type }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Dégâts (m) : {{ object.damage_m }}</p>
+          </div>
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Dégâts (p) : {{ object.damage_p }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Coup critique : {{ object.critical }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-auto" style="min-width: 12rem">
+            <p class="card-text">Prix : {{ object.price | currencyP }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text">Poids : {{ object.weight | weight }}</p>
+          </div>
+        </div>
+        <p class="card-text">{{ object.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
