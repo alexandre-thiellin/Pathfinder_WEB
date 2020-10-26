@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Race} from '../model/race.model';
 import {Class} from '../model/class.model';
@@ -27,6 +27,12 @@ export class PathfinderApiService {
 
   getCharacterById(id: number): Observable<Character> {
     return this.httpClient.get<Character>(this.baseUrl + 'characters/id/' + id);
+  }
+
+  postCharacter(character: Character): Observable<Character> {
+    const body = JSON.stringify(character);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.httpClient.post<Character>(this.baseUrl + 'characters', body, {headers});
   }
 
   getCharacterByName(name: string): Observable<Character> {

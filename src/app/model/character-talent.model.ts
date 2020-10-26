@@ -3,7 +3,7 @@ import {Talent} from './talent.model';
 
 export class CharacterTalent {
 
-  constructor(public id: number,
-              public talent: Talent) {
+  constructor(public talent: Talent,
+              public id?: number) {
   }
 }

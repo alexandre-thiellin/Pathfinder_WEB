@@ -23,12 +23,14 @@ import {TalentsListComponent} from './encyclopedia/talents-list/talents-list.com
 import {TalentComponent} from './encyclopedia/talents-list/talent/talent.component';
 import {WeaponsListComponent} from './encyclopedia/weapons-list/weapons-list.component';
 import {WeaponComponent} from './encyclopedia/weapons-list/weapon/weapon.component';
+import {NewCharacterComponent} from './characters-list/new-character/new-character.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/signup', component: SignupComponent },
   { path: 'characters', canActivate: [AuthGuardService], component: CharactersListComponent },
+  { path: 'characters/new', canActivate: [AuthGuardService], component: NewCharacterComponent },
   { path: 'characters/:id', canActivate: [AuthGuardService], component: CharacterComponent },
   { path: 'encyclopedia', canActivate: [AuthGuardService], component: EncyclopediaComponent },
   { path: 'encyclopedia/armors', canActivate: [AuthGuardService], component: ArmorsListComponent },

@@ -1,0 +1,363 @@
+<div class="row">
+  <div class="row-cols-sm-2">
+    <app-characters-menu></app-characters-menu>
+  </div>
+  <div class="col">
+    <div class="card mt-2 mb-2">
+      <div class="card-header"><h3>Nouveau personnage</h3></div>
+      <div class="card-body">
+        <form class="form" [formGroup]="newCharacterForm" (ngSubmit)="onSubmit()">
+          <div class="list-group">
+            <div class="list-group-item">
+              <h4>Informations de base</h4>
+              <div class="form-group form-inline">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Nom</span>
+                  </div>
+                  <input type="text" class="form-control" formControlName="name"
+                         [ngClass]="{'is-invalid': newCharacterForm.controls.name.invalid,
+                                'is-valid': !newCharacterForm.controls.name.invalid}">
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Sexe</span>
+                  </div>
+                  <select class="form-control custom-select" id="gender" formControlName="gender">
+                    <option selected hidden>----------</option>
+                    <option *ngFor="let gender of genders">{{ gender }}</option>
+                  </select>
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Race</span>
+                  </div>
+                  <select class="form-control custom-select" id="race" formControlName="race">
+                    <option selected hidden>------------</option>
+                    <option *ngFor="let race of races">{{ race.name }}</option>
+                  </select>
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Alignement</span>
+                  </div>
+                  <select class="form-control custom-select" id="alignment" formControlName="alignment">
+                    <option selected hidden>------------------</option>
+                    <option *ngFor="let alignment of alignments" value="{{ alignment[1] }}">{{ alignment[0] }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Age</span>
+                  </div>
+                  <select class="form-control custom-select" id="age" formControlName="age">
+                    <option *ngFor="let year of years">{{ year }}</option>
+                  </select>
+                  <div class="input-group-append">
+                    <span class="input-group-text">ans</span>
+                  </div>
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Taille</span>
+                  </div>
+                  <select class="form-control custom-select" id="height" formControlName="height">
+                    <option *ngFor="let cm of cms">{{ cm }}</option>
+                  </select>
+                  <div class="input-group-append">
+                    <span class="input-group-text">cm</span>
+                  </div>
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Poids</span>
+                  </div>
+                  <select class="form-control custom-select" id="weight" formControlName="weight">
+                    <option *ngFor="let kg of kgs">{{ kg }}</option>
+                  </select>
+                  <div class="input-group-append">
+                    <span class="input-group-text">kg</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">FOR</span>
+                  </div>
+                  <select class="form-control custom-select" id="strength" formControlName="strength">
+                    <option *ngFor="let score of scores">{{ score }}</option>
+                  </select>
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">DEX</span>
+                  </div>
+                  <select class="form-control custom-select" id="dexterity" formControlName="dexterity">
+                    <option *ngFor="let score of scores">{{ score }}</option>
+                  </select>
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">CON</span>
+                  </div>
+                  <select class="form-control custom-select" id="constitution" formControlName="constitution">
+                    <option *ngFor="let score of scores">{{ score }}</option>
+                  </select>
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">INT</span>
+                  </div>
+                  <select class="form-control custom-select" id="intelligence" formControlName="intelligence">
+                    <option *ngFor="let score of scores">{{ score }}</option>
+                  </select>
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">SAG</span>
+                  </div>
+                  <select class="form-control custom-select" id="wisdom" formControlName="wisdom">
+                    <option *ngFor="let score of scores">{{ score }}</option>
+                  </select>
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">CHA</span>
+                  </div>
+                  <select class="form-control custom-select" id="charisma" formControlName="charisma">
+                    <option *ngFor="let score of scores">{{ score }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Points de vie</span>
+                  </div>
+                  <select class="form-control custom-select" formControlName="hp">
+                    <option *ngFor="let i of hp">{{ i }}</option>
+                  </select>
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Points d'expérience</span>
+                  </div>
+                  <input type="number" class="form-control" min="0" formControlName="exp" style="width: 5rem">
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <h4>Classes</h4>
+              <div class="form-group form-inline">
+                <select class="form-control custom-select" formControlName="formClassId">
+                  <option *ngFor="let class of classes" value="{{ class.id }}">{{ class.name }}</option>
+                </select>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Niveau</span>
+                  </div>
+                  <input type="number" class="form-control" min="1" max="20" formControlName="formClassLvl">
+                </div>
+                <button class="btn btn-outline-success ml-4" type="button" (click)="onAddClass()">Ajouter une classe
+                </button>
+              </div>
+              <div class="alert alert-danger" role="alert" *ngIf="errorClasses" (click)="errorClasses = ''">
+                {{ errorClasses }}
+                <span class="small">(cliquer pour cacher)</span>
+              </div>
+              <div class="list-group">
+                <div class="list-group-item" *ngFor="let class of formClasses; let i = index">
+                  {{ class.class_.name }} - lvl : {{ class.lvl }}
+                  <button class="btn btn-outline-danger ml-4" type="button" (click)="onDeleteClass(i)">Supprimer</button>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <h4>Compétences</h4>
+              <div class="form-group">
+                <div class="input-group mb-2" *ngFor="let skill of skills" style="width: 33rem">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" style="width: 15rem">{{ skill.name }}</span>
+                  </div>
+                  <input type="number" class="form-control" formControlName="skill{{ skill.id }}" min="0" max="20"
+                         value="0" style="width: 5rem">
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <input type="checkbox" value="true" id="checkbox{{ skill.id }}"
+                             formControlName="classSkill{{ skill.id }}">
+                      <label class="form-check-label ml-2" for="checkbox{{ skill.id }}">
+                        Compétence de classe
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <h4>Dons</h4>
+              <div class="form-group form-inline">
+                <select class="form-control custom-select" formControlName="formTalentId">
+                  <option *ngFor="let talent of talents" value="{{ talent.id }}">{{ talent.name }}</option>
+                </select>
+                <button class="btn btn-outline-success ml-4" type="button" (click)="onAddTalent()">Ajouter un don
+                </button>
+              </div>
+              <div class="alert alert-danger" role="alert" *ngIf="errorTalents" (click)="errorTalents = ''">
+                {{ errorTalents }}
+                <span class="small">(cliquer pour cacher)</span>
+              </div>
+              <div class="list-group">
+                <div class="list-group-item" *ngFor="let talent of formTalents; let i = index">
+                  {{ talent.talent.name }}
+                  <button class="btn btn-outline-danger ml-4" type="button" (click)="onDeleteTalent(i)">Supprimer</button>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <h4>Sorts</h4>
+              <div class="form-group form-inline">
+                <select class="form-control custom-select" formControlName="formSpellId">
+                  <option *ngFor="let spell of spells" value="{{ spell.id }}">{{ spell.name }}</option>
+                </select>
+                <button class="btn btn-outline-success ml-4" type="button" (click)="onAddSpell()">Ajouter un sort
+                </button>
+              </div>
+              <div class="alert alert-danger" role="alert" *ngIf="errorSpells" (click)="errorSpells = ''">
+                {{ errorSpells }}
+                <span class="small">(cliquer pour cacher)</span>
+              </div>
+              <div class="list-group">
+                <div class="list-group-item" *ngFor="let spell of formSpells; let i = index">
+                  {{ spell.spell.name }}
+                  <button class="btn btn-outline-danger ml-4" type="button" (click)="onDeleteSpell(i)">Supprimer</button>
+                </div>
+              </div>
+            </div>
+            <div class="list-group-item">
+              <h4>Inventaire</h4>
+              <div class="form-group form-inline">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Pc</span>
+                  </div>
+                  <input type="number" class="form-control" formControlName="pc" min="0" style="width: 4rem">
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Pa</span>
+                  </div>
+                  <input type="number" class="form-control" formControlName="pc" min="0" style="width: 4rem">
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Po</span>
+                  </div>
+                  <input type="number" class="form-control" formControlName="pc" min="0" style="width: 4rem">
+                </div>
+                <div class="input-group ml-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Pp</span>
+                  </div>
+                  <input type="number" class="form-control" formControlName="pc" min="0" style="width: 4rem">
+                </div>
+              </div>
+              <div class="form-group form-inline">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text" style="width: 5rem">Item</div>
+                  </div>
+                  <select class="form-control custom-select" formControlName="formItemId" style="width: 15rem">
+                    <option *ngFor="let item of items" value="{{ item.id }}">{{ item.name }}</option>
+                  </select>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Qte</div>
+                  </div>
+                  <input type="number" class="form-control" min="1" max="100" formControlName="formItemQuantity" style="width: 5rem">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      Équipé
+                      <input type="checkbox" class="ml-2" formControlName="formItemEquipped">
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-outline-success ml-4" type="button" (click)="onAddItem()">Ajouter un item</button>
+              </div>
+              <div class="form-group form-inline">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text" style="width: 5rem">Arme</div>
+                  </div>
+                  <select class="form-control custom-select" formControlName="formWeaponId" style="width: 15rem">
+                    <option *ngFor="let weapon of weapons" value="{{ weapon.id }}">{{ weapon.name }}</option>
+                  </select>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Qte</div>
+                  </div>
+                  <input type="number" class="form-control" min="1" max="100" formControlName="formWeaponQuantity" style="width: 5rem">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      Équipé
+                      <input type="checkbox" class="ml-2" formControlName="formWeaponEquipped">
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-outline-success ml-4" type="button" (click)="onAddWeapon()">Ajouter une arme</button>
+              </div>
+              <div class="form-group form-inline">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text" style="width: 5rem">Armure</div>
+                  </div>
+                  <select class="form-control custom-select" formControlName="formArmorId" style="width: 15rem">
+                    <option *ngFor="let armor of armors" value="{{ armor.id }}">{{ armor.name }}</option>
+                  </select>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Qte</div>
+                  </div>
+                  <input type="number" class="form-control" min="1" max="100" formControlName="formArmorQuantity" style="width: 5rem">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      Équipé
+                      <input type="checkbox" class="ml-2" formControlName="formArmorEquipped">
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-outline-success ml-4" type="button" (click)="onAddArmor()">Ajouter une armure</button>
+              </div>
+              <div class="alert alert-danger" role="alert" *ngIf="errorInventory" (click)="errorInventory = ''">
+                {{ errorInventory }}
+                <span class="small">(cliquer pour cacher)</span>
+              </div>
+              <div class="list-group">
+                <div class="list-group-item" *ngFor="let item of formItems; let i = index">
+                  {{ item.item.name }} - Quantité : {{ item.quantity }} - Équipé : {{ item.equipped ? 'Oui' : 'Non' }}
+                  <button class="btn btn-outline-danger ml-4" type="button" (click)="onDeleteItem(i)">Supprimer</button>
+                </div>
+                <div class="list-group-item" *ngFor="let weapon of formWeapons; let i = index">
+                  {{ weapon.weapon.name }} - Quantité : {{ weapon.quantity }} - Équipé : {{ weapon.equipped ? 'Oui' : 'Non' }}
+                  <button class="btn btn-outline-danger ml-4" type="button" (click)="onDeleteWeapon(i)">Supprimer</button>
+                </div>
+                <div class="list-group-item" *ngFor="let armor of formArmors; let i = index">
+                  {{ armor.armor.name }} - Quantité : {{ armor.quantity }} - Équipé : {{ armor.equipped ? 'Oui' : 'Non' }}
+                  <button class="btn btn-outline-danger ml-4" type="button" (click)="onDeleteArmor(i)">Supprimer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="list-group-item">
+            <button class="btn btn-primary" type="submit" [disabled]="newCharacterForm.invalid">Créer un personnage</button>
+            <div class="alert alert-danger" role="alert" *ngIf="errorForm" (click)="errorForm = ''">
+              {{ errorForm }}
+              <span class="small">(cliquer pour cacher)</span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

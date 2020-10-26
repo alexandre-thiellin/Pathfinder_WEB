@@ -2,8 +2,9 @@ import {Weapon} from './weapon.model';
 
 export class CharacterWeapon {
 
-  constructor(public id: number,
-              public weapon: Weapon,
-              public equipped: boolean) {
+  constructor(public weapon: Weapon,
+              public quantity: number,
+              public equipped: boolean,
+              public id?: number) {
   }
 }

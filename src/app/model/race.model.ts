@@ -4,4 +4,8 @@ export class Race {
               public name: string,
               public description: string) {
   }
+
+  toString(): string {
+    return '{"id": ' + this.id + ',"name": ' + this.name + ',"description": ' + this.description + '}';
+  }
 }

@@ -12,14 +12,19 @@ export class CharacterComponent implements OnInit {
 
   character: Character;
 
-  constructor(private charactersService: CharactersService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private charactersService: CharactersService, private activatedRoute: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-    this.charactersService.getCharacterById(this.activatedRoute.snapshot.params.id).then(
-      (data) => {
-        this.character = data;
+    this.activatedRoute.params.subscribe(
+      value => {
+        this.charactersService.getCharacterById(value.id).then(
+          (data) => {
+            this.character = data;
+          }
+        );
       }
     );
+
   }
 
   onDetails(route: string): void {

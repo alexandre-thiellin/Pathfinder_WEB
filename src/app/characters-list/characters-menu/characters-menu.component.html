@@ -1,10 +1,13 @@
-<div class="col bg-secondary" style="min-height: 88vh">
+<div class="col bg-secondary" style="min-height: 88vh;height: 100%">
   <h4>
     <a class="nav-link text-light text-uppercase" routerLink="/characters">Personnages</a>
   </h4>
   <ul class="nav flex-column nav-tabs ">
     <li class="nav-item" routerLinkActive="active" *ngFor="let character of characters">
       <a class="nav-link text-light" routerLink="/characters/{{ character.id }}">{{ character.name }}</a>
+    </li>
+    <li class="nav-item btn-primary active">
+      <a class="nav-link text-light text-center" routerLink="/characters/new">Nouveau personnage</a>
     </li>
   </ul>
 </div>

@@ -40,4 +40,19 @@ export class CharactersService {
       }
     );
   }
+
+  postNewCharacter(character: Character): Promise<Character> {
+    return new Promise<Character>(
+      (resolve, reject) => {
+        this.pathfinderApi.postCharacter(character).subscribe(
+          (data) => {
+            resolve(data);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+      }
+    );
+  }
 }
