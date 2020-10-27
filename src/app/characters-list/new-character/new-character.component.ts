@@ -518,99 +518,21 @@ export class NewCharacterComponent implements OnInit, OnDestroy {
       const skill11 = this.newCharacterForm.value.skill11;
       const classSkill11 = this.newCharacterForm.value.classSkill11;
 
-      let armorId = 0;
-      let classId = 0;
-      let itemId = 0;
-      let skillId = 0;
-      let spellId = 0;
-      let talentId = 0;
-      let weaponId = 0;
-      this.characters.forEach(
-        character => {
-          character.characters_armors.forEach(
-            characterArmor => {
-              if (armorId < characterArmor.id) {
-                armorId = characterArmor.id;
-              }
-            }
-          );
-          character.characters_classes.forEach(
-            characterClass => {
-              if (classId < characterClass.id) {
-                classId = characterClass.id;
-              }
-            }
-          );
-          character.characters_items.forEach(
-            characterItem => {
-              if (itemId < characterItem.id) {
-                itemId = characterItem.id;
-              }
-            }
-          );
-          character.characters_skills.forEach(
-            characterSkill => {
-              if (skillId < characterSkill.id) {
-                skillId = characterSkill.id;
-              }
-            }
-          );
-          character.characters_spells.forEach(
-            characterSpell => {
-              if (spellId < characterSpell.id) {
-                spellId = characterSpell.id;
-              }
-            }
-          );
-          character.characters_talents.forEach(
-            characterTalent => {
-              if (talentId < characterTalent.id) {
-                talentId = characterTalent.id;
-              }
-            }
-          );
-          character.characters_weapons.forEach(
-            characterWeapon => {
-              if (weaponId < characterWeapon.id) {
-                weaponId = characterWeapon.id;
-              }
-            }
-          );
-        }
-      );
-
-      this.formSkills.push(new CharacterSkill(skillId + 1 , this.skills[0], classSkill1, skill1));
-      this.formSkills.push(new CharacterSkill(skillId + 2 , this.skills[1], classSkill2, skill2));
-      this.formSkills.push(new CharacterSkill(skillId + 3 , this.skills[2], classSkill3, skill3));
-      this.formSkills.push(new CharacterSkill(skillId + 4 , this.skills[3], classSkill4, skill4));
-      this.formSkills.push(new CharacterSkill(skillId + 5 , this.skills[4], classSkill5, skill5));
-      this.formSkills.push(new CharacterSkill(skillId + 6 , this.skills[5], classSkill6, skill6));
-      this.formSkills.push(new CharacterSkill(skillId + 7 , this.skills[6], classSkill7, skill7));
-      this.formSkills.push(new CharacterSkill(skillId + 8 , this.skills[7], classSkill8, skill8));
-      this.formSkills.push(new CharacterSkill(skillId + 9 , this.skills[8], classSkill9, skill9));
-      this.formSkills.push(new CharacterSkill(skillId + 10 , this.skills[9], classSkill10, skill10));
-      this.formSkills.push(new CharacterSkill(skillId + 11 , this.skills[10], classSkill11, skill11));
-
-      const id = this.characters.reduce(
-        (previousValue, currentValue) => {
-          if (currentValue.id > previousValue.id) {
-            return currentValue;
-          } else {
-            return previousValue;
-          }
-        }
-      ).id + 1;
-
-      this.formArmors.forEach((value, index) => { value.id = armorId + index + 1; });
-      this.formClasses.forEach((value, index) => { value.id = classId + index + 1; });
-      this.formItems.forEach((value, index) => { value.id = itemId + index + 1; });
-      this.formSpells.forEach((value, index) => { value.id = spellId + index + 1; });
-      this.formTalents.forEach((value, index) => { value.id = talentId + index + 1; });
-      this.formWeapons.forEach((value, index) => { value.id = weaponId + index + 1; });
+      this.formSkills.push(new CharacterSkill(this.skills[0], classSkill1, skill1));
+      this.formSkills.push(new CharacterSkill(this.skills[1], classSkill2, skill2));
+      this.formSkills.push(new CharacterSkill(this.skills[2], classSkill3, skill3));
+      this.formSkills.push(new CharacterSkill(this.skills[3], classSkill4, skill4));
+      this.formSkills.push(new CharacterSkill(this.skills[4], classSkill5, skill5));
+      this.formSkills.push(new CharacterSkill(this.skills[5], classSkill6, skill6));
+      this.formSkills.push(new CharacterSkill(this.skills[6], classSkill7, skill7));
+      this.formSkills.push(new CharacterSkill(this.skills[7], classSkill8, skill8));
+      this.formSkills.push(new CharacterSkill(this.skills[8], classSkill9, skill9));
+      this.formSkills.push(new CharacterSkill(this.skills[9], classSkill10, skill10));
+      this.formSkills.push(new CharacterSkill(this.skills[10], classSkill11, skill11));
 
       this.charactersService.postNewCharacter(
         new Character(
-          id, name, alignment, race, gender, age, height, weight,
+          name, alignment, race, gender, age, height, weight * 1000,
           strength, dexterity, constitution, intelligence, wisdom, charisma,
           hp, pc, pa, po, pp, exp,
           this.formClasses,

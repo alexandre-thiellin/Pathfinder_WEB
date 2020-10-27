@@ -10,8 +10,7 @@ import {CharacterItem} from './character-item.model';
 // tslint:disable:variable-name
 export class Character {
 
-  constructor(public id: number,
-              public name: string,
+  constructor(public name: string,
               public alignment: string,
               public race: Race,
               public gender: string,
@@ -36,6 +35,7 @@ export class Character {
               public characters_spells: CharacterSpell[],
               public characters_weapons: CharacterWeapon[],
               public characters_armors: CharacterArmor[],
-              public characters_items: CharacterItem[]) {
+              public characters_items: CharacterItem[],
+              public id?: number) {
   }
 }

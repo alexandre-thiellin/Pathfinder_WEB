@@ -11,11 +11,11 @@
               (click)="onDetails('/encyclopedia/races/'+character.race.id)">
             Race : {{ character.race.name }}
           </li>
-          <li class="list-group-item">Age : {{ character.age }}</li>
+          <li class="list-group-item">Age : {{ character.age }} ans</li>
           <li class="list-group-item">Sexe : {{ character.gender }}</li>
           <li class="list-group-item">Alignement : {{ character.alignment }}</li>
-          <li class="list-group-item">Height : {{ character.height }}</li>
-          <li class="list-group-item">Weight : {{ character.weight }}</li>
+          <li class="list-group-item">Height : {{ character.height }} cm</li>
+          <li class="list-group-item">Weight : {{ character.weight | weight }}</li>
         </ul>
         <ul class="list-group list-group-horizontal">
           <li class="list-group-item list-group-item-action border-secondary" style="width: 10%"
@@ -47,7 +47,7 @@
         <ul class="list-group">
           <li class="list-group-item list-group-item-action"
               *ngFor="let characterSkill of character.characters_skills"
-              [ngClass]="{'border-success': characterSkill.class_skill}"
+              [ngClass]="{'text-success': characterSkill.class_skill}"
               (click)="onDetails('/encyclopedia/skills/'+characterSkill.skill.id)">
             {{ characterSkill.skill.name }} - rang : {{ characterSkill.rank }}
           </li>
